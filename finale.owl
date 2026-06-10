@@ -14,7 +14,7 @@
      xmlns:schema="http://schema.org/"
      xmlns:dcterms="http://purl.org/dc/terms/">
     <owl:Ontology rdf:about="http://www.unito.it/modsem/boardgames">
-        <dc:creator xml:lang="it">[Nome Cognome]</dc:creator>
+        <dc:creator xml:lang="it">Davide Capra</dc:creator>
         <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-06-08</dc:date>
         <dc:description xml:lang="it">Ontologia che modella il dominio dei giochi da tavolo (tabletop games): giochi base ed espansioni, meccaniche di gioco, autori ed editori, componenti, livelli di complessita&apos; e sessioni di gioco. Pensata per task di consultazione di catalogo e raccomandazione, nello spirito di BoardGameGeek ma con semantica formale.</dc:description>
         <dc:title xml:lang="it">Ontologia per il catalogo e la raccomandazione di giochi da tavolo</dc:title>
@@ -40,9 +40,7 @@
 
     <!-- http://purl.org/dc/elements/1.1/creator -->
 
-    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/creator">
-        <dc:creator xml:lang="it">Davide Capra</dc:creator>
-    </owl:AnnotationProperty>
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/creator"/>
     
 
 
