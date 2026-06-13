@@ -1,0 +1,558 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:bg="http://www.unito.it/modsem/boardgames#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns:vann="http://purl.org/vocab/vann/"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+>
+  <owl:DatatypeProperty rdf:about="http://www.unito.it/modsem/boardgames#numeroMaxGiocatori">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:domain rdf:resource="http://www.unito.it/modsem/boardgames#Gioco"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    <rdfs:label xml:lang="it">numero massimo di giocatori</rdfs:label>
+    <rdfs:comment xml:lang="it">Il numero massimo di giocatori supportato dal gioco (xsd:integer).</rdfs:comment>
+  </owl:DatatypeProperty>
+  <owl:Class rdf:about="http://www.unito.it/modsem/boardgames#GiocoLungo">
+    <rdfs:subClassOf rdf:resource="http://www.unito.it/modsem/boardgames#Gioco"/>
+    <rdfs:label xml:lang="it">Gioco lungo</rdfs:label>
+    <rdfs:comment xml:lang="it">Gioco con durata media superiore a 90 minuti. Popolata dalla regola SWRL R1.</rdfs:comment>
+  </owl:Class>
+  <owl:Ontology rdf:about="http://www.unito.it/modsem/boardgames">
+    <rdfs:label xml:lang="it">Ontologia dei Giochi da Tavolo</rdfs:label>
+    <dc:title xml:lang="it">Ontologia per il catalogo e la raccomandazione di giochi da tavolo</dc:title>
+    <dc:description xml:lang="it">Ontologia che modella il dominio dei giochi da tavolo: giochi, meccaniche, autori, editori, componenti, livelli di complessita' e sessioni di gioco, per task di consultazione e raccomandazione di catalogo.</dc:description>
+    <dc:creator xml:lang="it">[Nome Cognome]</dc:creator>
+    <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-06-08</dc:date>
+    <vann:preferredNamespacePrefix>bg</vann:preferredNamespacePrefix>
+    <vann:preferredNamespaceUri>http://www.unito.it/modsem/boardgames#</vann:preferredNamespaceUri>
+    <owl:versionInfo>1.0</owl:versionInfo>
+    <dcterms:license rdf:resource="http://creativecommons.org/licenses/by/4.0/"/>
+  </owl:Ontology>
+  <owl:ObjectProperty rdf:about="http://www.unito.it/modsem/boardgames#vintaDa">
+    <rdfs:domain rdf:resource="http://www.unito.it/modsem/boardgames#PartitaGiocata"/>
+    <rdfs:range rdf:resource="http://www.unito.it/modsem/boardgames#Persona"/>
+    <rdfs:label xml:lang="it">vinta da</rdfs:label>
+    <rdfs:comment xml:lang="it">Collega una sessione di gioco al giocatore che l'ha vinta. Usata dalla regola SWRL R4.</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:about="http://www.unito.it/modsem/boardgames#etaConsigliata">
+    <rdfs:domain rdf:resource="http://www.unito.it/modsem/boardgames#Gioco"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    <rdfs:label xml:lang="it">eta' consigliata</rdfs:label>
+    <rdfs:comment xml:lang="it">L'eta' minima consigliata dall'editore (xsd:integer). Usata dalla regola SWRL R3.</rdfs:comment>
+  </owl:DatatypeProperty>
+  <owl:ObjectProperty rdf:about="http://www.unito.it/modsem/boardgames#eParteDi">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+    <rdfs:domain rdf:resource="http://www.unito.it/modsem/boardgames#Componente"/>
+    <rdfs:range>
+      <owl:Class rdf:nodeID="n81a913dff22940b9982ebe60d5dab2cdb1">
+        <owl:unionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://www.unito.it/modsem/boardgames#Componente"/>
+          <rdf:Description rdf:about="http://www.unito.it/modsem/boardgames#Gioco"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:range>
+    <rdfs:label xml:lang="it">e' parte di</rdfs:label>
+    <rdfs:comment xml:lang="it">Proprieta' transitiva di composizione: un componente puo' essere parte di un altro componente o di un gioco; la transitivita' propaga l'appartenenza al gioco complessivo.</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.unito.it/modsem/boardgames#progettatoDa">
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="http://www.unito.it/modsem/boardgames#haProgettato">
+        <rdfs:domain rdf:resource="http://www.unito.it/modsem/boardgames#Autore"/>
+        <rdfs:range rdf:resource="http://www.unito.it/modsem/boardgames#Gioco"/>
+        <rdfs:label xml:lang="it">ha progettato</rdfs:label>
+        <rdfs:comment xml:lang="it">Proprieta' inversa di 'progettatoDa': collega un autore ai giochi che ha progettato.</rdfs:comment>
+      </owl:ObjectProperty>
+    </owl:inverseOf>
+    <rdfs:domain rdf:resource="http://www.unito.it/modsem/boardgames#Gioco"/>
+    <rdfs:range rdf:resource="http://www.unito.it/modsem/boardgames#Autore"/>
+    <rdfs:label xml:lang="it">progettato da</rdfs:label>
+    <rdfs:comment xml:lang="it">Collega un gioco al suo autore (game designer). Proprieta' inversa di 'haProgettato'.</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:about="http://www.unito.it/modsem/boardgames#annoPubblicazione">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:domain rdf:resource="http://www.unito.it/modsem/boardgames#Gioco"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#gYear"/>
+    <rdfs:label xml:lang="it">anno di pubblicazione</rdfs:label>
+    <rdfs:comment xml:lang="it">L'anno della prima pubblicazione del gioco (xsd:gYear).</rdfs:comment>
+  </owl:DatatypeProperty>
+  <owl:AllDifferent rdf:nodeID="n81a913dff22940b9982ebe60d5dab2cdb39">
+    <owl:distinctMembers rdf:parseType="Collection">
+      <rdf:Description rdf:about="http://www.unito.it/modsem/boardgames#Mattel"/>
+      <rdf:Description rdf:about="http://www.unito.it/modsem/boardgames#Hasbro"/>
+      <rdf:Description rdf:about="http://www.unito.it/modsem/boardgames#EditriceGiochi"/>
+    </owl:distinctMembers>
+  </owl:AllDifferent>
+  <owl:ObjectProperty rdf:about="http://www.unito.it/modsem/boardgames#pubblicatoDa">
+    <rdfs:domain rdf:resource="http://www.unito.it/modsem/boardgames#Gioco"/>
+    <rdfs:range rdf:resource="http://www.unito.it/modsem/boardgames#Editore"/>
+    <rdfs:label xml:lang="it">pubblicato da</rdfs:label>
+    <rdfs:comment xml:lang="it">Collega un gioco all'editore che lo ha pubblicato.</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:about="http://www.unito.it/modsem/boardgames#durataMediaMinuti">
+    <rdfs:domain rdf:resource="http://www.unito.it/modsem/boardgames#Gioco"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    <rdfs:label xml:lang="it">durata media in minuti</rdfs:label>
+    <rdfs:comment xml:lang="it">La durata media di una partita in minuti (xsd:integer). Usata dalla regola SWRL R1.</rdfs:comment>
+  </owl:DatatypeProperty>
+  <bg:Componente rdf:about="http://www.unito.it/modsem/boardgames#CartaPescaQuattro">
+    <bg:eParteDi>
+      <bg:Componente rdf:about="http://www.unito.it/modsem/boardgames#MazzoUNO">
+        <bg:eParteDi rdf:resource="http://www.unito.it/modsem/boardgames#UNO"/>
+        <rdfs:label xml:lang="it">Mazzo di UNO</rdfs:label>
+        <rdfs:comment xml:lang="it">Il mazzo di 108 carte di UNO.</rdfs:comment>
+      </bg:Componente>
+    </bg:eParteDi>
+    <rdfs:label xml:lang="it">Carta Pesca Quattro</rdfs:label>
+    <rdfs:comment xml:lang="it">Singola carta speciale. Per transitivita' di 'eParteDi' il reasoner inferisce che e' parte di UNO.</rdfs:comment>
+  </bg:Componente>
+  <owl:Class rdf:about="http://www.unito.it/modsem/boardgames#GiocoDaGruppo">
+    <rdfs:subClassOf rdf:resource="http://www.unito.it/modsem/boardgames#Gioco"/>
+    <rdfs:label xml:lang="it">Gioco da gruppo</rdfs:label>
+    <rdfs:comment xml:lang="it">Gioco adatto a gruppi numerosi (almeno 6 giocatori). Popolata dalla regola SWRL R2.</rdfs:comment>
+  </owl:Class>
+  <owl:ObjectProperty rdf:about="http://www.unito.it/modsem/boardgames#haComponente">
+    <rdfs:domain rdf:resource="http://www.unito.it/modsem/boardgames#Gioco"/>
+    <rdfs:range rdf:resource="http://www.unito.it/modsem/boardgames#Componente"/>
+    <rdfs:label xml:lang="it">ha componente</rdfs:label>
+    <rdfs:comment xml:lang="it">Collega un gioco a un componente fisico che ne fa parte.</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:about="http://www.unito.it/modsem/boardgames#dataPartita">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:domain rdf:resource="http://www.unito.it/modsem/boardgames#PartitaGiocata"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+    <rdfs:label xml:lang="it">data della partita</rdfs:label>
+    <rdfs:comment xml:lang="it">La data della sessione di gioco (xsd:date).</rdfs:comment>
+  </owl:DatatypeProperty>
+  <owl:ObjectProperty rdf:about="http://www.unito.it/modsem/boardgames#haVinto">
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="http://www.unito.it/modsem/boardgames#haGiocato">
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://www.unito.it/modsem/boardgames#partecipaA"/>
+          <rdf:Description rdf:about="http://www.unito.it/modsem/boardgames#partitaDelGioco"/>
+        </owl:propertyChainAxiom>
+        <rdfs:domain rdf:resource="http://www.unito.it/modsem/boardgames#Persona"/>
+        <rdfs:range rdf:resource="http://www.unito.it/modsem/boardgames#Gioco"/>
+        <rdfs:label xml:lang="it">ha giocato</rdfs:label>
+        <rdfs:comment xml:lang="it">Property chain: se una persona partecipa a una partita del gioco G, allora ha giocato a G.</rdfs:comment>
+      </owl:ObjectProperty>
+    </rdfs:subPropertyOf>
+    <rdfs:domain rdf:resource="http://www.unito.it/modsem/boardgames#Persona"/>
+    <rdfs:range rdf:resource="http://www.unito.it/modsem/boardgames#Gioco"/>
+    <rdfs:label xml:lang="it">ha vinto</rdfs:label>
+    <rdfs:comment xml:lang="it">Collega una persona a un gioco di cui ha vinto almeno una partita. Popolata dalla regola SWRL R4.</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:Class rdf:about="http://www.unito.it/modsem/boardgames#GiocoConAleatorieta">
+    <owl:equivalentClass>
+      <owl:Class rdf:nodeID="n81a913dff22940b9982ebe60d5dab2cdb12">
+        <owl:intersectionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://www.unito.it/modsem/boardgames#Gioco"/>
+          <owl:Restriction rdf:nodeID="n81a913dff22940b9982ebe60d5dab2cdb13">
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="http://www.unito.it/modsem/boardgames#haMeccanica">
+                <rdfs:domain rdf:resource="http://www.unito.it/modsem/boardgames#Gioco"/>
+                <rdfs:range rdf:resource="http://www.unito.it/modsem/boardgames#Meccanica"/>
+                <rdfs:label xml:lang="it">ha meccanica</rdfs:label>
+                <rdfs:comment xml:lang="it">Collega un gioco a una delle sue meccaniche di gioco.</rdfs:comment>
+              </owl:ObjectProperty>
+            </owl:onProperty>
+            <owl:someValuesFrom rdf:resource="http://www.unito.it/modsem/boardgames#MeccanicaAleatoria"/>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <rdfs:label xml:lang="it">Gioco con aleatorieta'</rdfs:label>
+    <rdfs:comment xml:lang="it">Classe definita (restrizione SOME): un gioco con almeno una meccanica aleatoria. Popolata dal reasoner.</rdfs:comment>
+  </owl:Class>
+  <owl:AllDifferent rdf:nodeID="n81a913dff22940b9982ebe60d5dab2cdb20">
+    <owl:distinctMembers rdf:parseType="Collection">
+      <rdf:Description rdf:about="http://www.unito.it/modsem/boardgames#LancioDadi"/>
+      <rdf:Description rdf:about="http://www.unito.it/modsem/boardgames#PescaCarte"/>
+      <rdf:Description rdf:about="http://www.unito.it/modsem/boardgames#Negoziazione"/>
+      <rdf:Description rdf:about="http://www.unito.it/modsem/boardgames#Commercio"/>
+      <rdf:Description rdf:about="http://www.unito.it/modsem/boardgames#GestionePatrimonio"/>
+      <rdf:Description rdf:about="http://www.unito.it/modsem/boardgames#ControlloArea"/>
+      <rdf:Description rdf:about="http://www.unito.it/modsem/boardgames#CorrispondenzaColori"/>
+    </owl:distinctMembers>
+  </owl:AllDifferent>
+  <owl:Class rdf:about="http://www.unito.it/modsem/boardgames#GiocoComplesso">
+    <owl:equivalentClass>
+      <owl:Class rdf:nodeID="n81a913dff22940b9982ebe60d5dab2cdb16">
+        <owl:intersectionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://www.unito.it/modsem/boardgames#Gioco"/>
+          <owl:Restriction rdf:nodeID="n81a913dff22940b9982ebe60d5dab2cdb17">
+            <owl:onProperty rdf:resource="http://www.unito.it/modsem/boardgames#haMeccanica"/>
+            <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">3</owl:minQualifiedCardinality>
+            <owl:onClass rdf:resource="http://www.unito.it/modsem/boardgames#Meccanica"/>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <rdfs:label xml:lang="it">Gioco complesso</rdfs:label>
+    <rdfs:comment xml:lang="it">Classe definita (restrizione MIN): un gioco con almeno 3 meccaniche distinte. Popolata dal reasoner.</rdfs:comment>
+  </owl:Class>
+  <owl:DatatypeProperty rdf:about="http://www.unito.it/modsem/boardgames#votoBGG">
+    <rdfs:domain rdf:resource="http://www.unito.it/modsem/boardgames#Gioco"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+    <rdfs:label xml:lang="it">voto BoardGameGeek</rdfs:label>
+    <rdfs:comment xml:lang="it">Il voto medio (1-10) della comunita' BoardGameGeek (xsd:decimal).</rdfs:comment>
+  </owl:DatatypeProperty>
+  <owl:AllDifferent rdf:nodeID="n81a913dff22940b9982ebe60d5dab2cdb28">
+    <owl:distinctMembers rdf:parseType="Collection">
+      <rdf:Description rdf:about="http://www.unito.it/modsem/boardgames#UNO"/>
+      <rdf:Description rdf:about="http://www.unito.it/modsem/boardgames#Monopoli"/>
+      <rdf:Description rdf:about="http://www.unito.it/modsem/boardgames#Risiko"/>
+    </owl:distinctMembers>
+  </owl:AllDifferent>
+  <owl:ObjectProperty rdf:about="http://www.unito.it/modsem/boardgames#haCollaboratoCon">
+    <rdfs:domain rdf:resource="http://www.unito.it/modsem/boardgames#Autore"/>
+    <rdfs:range rdf:resource="http://www.unito.it/modsem/boardgames#Editore"/>
+    <rdfs:label xml:lang="it">ha collaborato con</rdfs:label>
+    <rdfs:comment xml:lang="it">Collega un autore a un editore con cui ha lavorato. Popolata dalla regola SWRL R5.</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:AllDifferent rdf:nodeID="n81a913dff22940b9982ebe60d5dab2cdb43">
+    <owl:distinctMembers rdf:parseType="Collection">
+      <rdf:Description rdf:about="http://www.unito.it/modsem/boardgames#Leggero"/>
+      <rdf:Description rdf:about="http://www.unito.it/modsem/boardgames#MedioLeggero"/>
+      <rdf:Description rdf:about="http://www.unito.it/modsem/boardgames#Medio"/>
+      <rdf:Description rdf:about="http://www.unito.it/modsem/boardgames#MedioPesante"/>
+      <rdf:Description rdf:about="http://www.unito.it/modsem/boardgames#Pesante"/>
+    </owl:distinctMembers>
+  </owl:AllDifferent>
+  <owl:ObjectProperty rdf:about="http://www.unito.it/modsem/boardgames#haComplessita">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:domain rdf:resource="http://www.unito.it/modsem/boardgames#Gioco"/>
+    <rdfs:range rdf:resource="http://www.unito.it/modsem/boardgames#LivelloComplessita"/>
+    <rdfs:label xml:lang="it">ha complessita'</rdfs:label>
+    <rdfs:comment xml:lang="it">Proprieta' funzionale: ogni gioco ha un unico livello di complessita' (fascia di peso BGG).</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:Class rdf:about="http://www.unito.it/modsem/boardgames#GiocoAdattoBambini">
+    <rdfs:subClassOf rdf:resource="http://www.unito.it/modsem/boardgames#Gioco"/>
+    <rdfs:label xml:lang="it">Gioco adatto ai bambini</rdfs:label>
+    <rdfs:comment xml:lang="it">Gioco con eta' consigliata non superiore a 8 anni. Popolata dalla regola SWRL R3.</rdfs:comment>
+  </owl:Class>
+  <owl:DatatypeProperty rdf:about="http://www.unito.it/modsem/boardgames#titolo">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:domain rdf:resource="http://www.unito.it/modsem/boardgames#Gioco"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label xml:lang="it">titolo</rdfs:label>
+    <rdfs:comment xml:lang="it">Il titolo ufficiale del gioco da tavolo (xsd:string).</rdfs:comment>
+  </owl:DatatypeProperty>
+  <owl:AllDifferent rdf:nodeID="n81a913dff22940b9982ebe60d5dab2cdb32">
+    <owl:distinctMembers rdf:parseType="Collection">
+      <rdf:Description rdf:about="http://www.unito.it/modsem/boardgames#Anna"/>
+      <rdf:Description rdf:about="http://www.unito.it/modsem/boardgames#Bruno"/>
+      <rdf:Description rdf:about="http://www.unito.it/modsem/boardgames#Carla"/>
+      <rdf:Description rdf:about="http://www.unito.it/modsem/boardgames#MerleRobbins"/>
+      <rdf:Description rdf:about="http://www.unito.it/modsem/boardgames#CharlesDarrow"/>
+      <rdf:Description rdf:about="http://www.unito.it/modsem/boardgames#AlbertLamorisse"/>
+    </owl:distinctMembers>
+  </owl:AllDifferent>
+  <owl:Class rdf:about="http://www.unito.it/modsem/boardgames#LivelloComplessita">
+    <owl:equivalentClass>
+      <owl:Class rdf:nodeID="n81a913dff22940b9982ebe60d5dab2cdb6">
+        <owl:oneOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://www.unito.it/modsem/boardgames#Leggero"/>
+          <rdf:Description rdf:about="http://www.unito.it/modsem/boardgames#MedioLeggero"/>
+          <rdf:Description rdf:about="http://www.unito.it/modsem/boardgames#Medio"/>
+          <rdf:Description rdf:about="http://www.unito.it/modsem/boardgames#MedioPesante"/>
+          <rdf:Description rdf:about="http://www.unito.it/modsem/boardgames#Pesante"/>
+        </owl:oneOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <rdfs:label xml:lang="it">Livello di complessita'</rdfs:label>
+    <rdfs:comment xml:lang="it">Classe enumerata: l'insieme chiuso delle cinque fasce di peso/complessita' usate da BoardGameGeek.</rdfs:comment>
+  </owl:Class>
+  <bg:GiocoBase rdf:about="http://www.unito.it/modsem/boardgames#Risiko">
+    <rdf:type rdf:resource="http://www.unito.it/modsem/boardgames#Wargame"/>
+    <bg:titolo>Risiko!</bg:titolo>
+    <bg:annoPubblicazione rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">1957</bg:annoPubblicazione>
+    <bg:numeroMaxGiocatori rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</bg:numeroMaxGiocatori>
+    <bg:durataMediaMinuti rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">120</bg:durataMediaMinuti>
+    <bg:etaConsigliata rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">10</bg:etaConsigliata>
+    <bg:votoBGG rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">5.6</bg:votoBGG>
+    <bg:haComplessita>
+      <bg:LivelloComplessita rdf:about="http://www.unito.it/modsem/boardgames#Medio">
+        <rdfs:label xml:lang="it">Medio</rdfs:label>
+        <rdfs:comment xml:lang="it">Complessita' intermedia.</rdfs:comment>
+      </bg:LivelloComplessita>
+    </bg:haComplessita>
+    <bg:progettatoDa>
+      <bg:Autore rdf:about="http://www.unito.it/modsem/boardgames#AlbertLamorisse">
+        <foaf:name>Albert Lamorisse</foaf:name>
+        <rdfs:label xml:lang="it">Albert Lamorisse</rdfs:label>
+        <rdfs:comment xml:lang="it">Autore francese del gioco originale (Risk).</rdfs:comment>
+      </bg:Autore>
+    </bg:progettatoDa>
+    <bg:pubblicatoDa>
+      <bg:Editore rdf:about="http://www.unito.it/modsem/boardgames#EditriceGiochi">
+        <foaf:name>Editrice Giochi</foaf:name>
+        <rdfs:label xml:lang="it">Editrice Giochi</rdfs:label>
+        <rdfs:comment xml:lang="it">Casa editrice italiana che pubblica Risiko!.</rdfs:comment>
+      </bg:Editore>
+    </bg:pubblicatoDa>
+    <bg:haMeccanica>
+      <bg:MeccanicaAleatoria rdf:about="http://www.unito.it/modsem/boardgames#LancioDadi">
+        <rdf:type rdf:resource="http://www.unito.it/modsem/boardgames#Meccanica"/>
+        <skos:prefLabel xml:lang="it">Lancio di dadi</skos:prefLabel>
+        <rdfs:label xml:lang="it">Lancio di dadi</rdfs:label>
+        <rdfs:comment xml:lang="it">Uso del lancio di dadi per determinare esiti (meccanica aleatoria).</rdfs:comment>
+      </bg:MeccanicaAleatoria>
+    </bg:haMeccanica>
+    <bg:haMeccanica>
+      <bg:Meccanica rdf:about="http://www.unito.it/modsem/boardgames#ControlloArea">
+        <skos:prefLabel xml:lang="it">Controllo di area</skos:prefLabel>
+        <rdfs:label xml:lang="it">Controllo di area</rdfs:label>
+        <rdfs:comment xml:lang="it">Conquista e difesa di territori sulla mappa.</rdfs:comment>
+      </bg:Meccanica>
+    </bg:haMeccanica>
+    <bg:haMeccanica>
+      <bg:Meccanica rdf:about="http://www.unito.it/modsem/boardgames#Negoziazione">
+        <skos:prefLabel xml:lang="it">Negoziazione</skos:prefLabel>
+        <rdfs:label xml:lang="it">Negoziazione</rdfs:label>
+        <rdfs:comment xml:lang="it">Accordi e scambi tra giocatori (concetto SKOS piu' ampio del Commercio).</rdfs:comment>
+      </bg:Meccanica>
+    </bg:haMeccanica>
+    <bg:haComponente>
+      <bg:Componente rdf:about="http://www.unito.it/modsem/boardgames#PlanciaRisiko">
+        <bg:eParteDi rdf:resource="http://www.unito.it/modsem/boardgames#Risiko"/>
+        <rdfs:label xml:lang="it">Plancia di Risiko!</rdfs:label>
+        <rdfs:comment xml:lang="it">La mappa del mondo divisa in territori.</rdfs:comment>
+      </bg:Componente>
+    </bg:haComponente>
+    <rdfs:label xml:lang="it">Risiko!</rdfs:label>
+    <rdfs:comment xml:lang="it">Wargame di conquista (1957): 3 meccaniche -&gt; GiocoComplesso; dadi -&gt; GiocoConAleatorieta; ramo Gioco &gt; GiocoDiStrategia &gt; Wargame.</rdfs:comment>
+  </bg:GiocoBase>
+  <bg:GiocoBase rdf:about="http://www.unito.it/modsem/boardgames#UNO">
+    <rdf:type rdf:resource="http://www.unito.it/modsem/boardgames#GiocoPerFamiglie"/>
+    <bg:titolo>UNO</bg:titolo>
+    <bg:annoPubblicazione rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">1971</bg:annoPubblicazione>
+    <bg:numeroMaxGiocatori rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">10</bg:numeroMaxGiocatori>
+    <bg:durataMediaMinuti rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">30</bg:durataMediaMinuti>
+    <bg:etaConsigliata rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">7</bg:etaConsigliata>
+    <bg:votoBGG rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">5.4</bg:votoBGG>
+    <bg:haComplessita>
+      <bg:LivelloComplessita rdf:about="http://www.unito.it/modsem/boardgames#Leggero">
+        <rdfs:label xml:lang="it">Leggero</rdfs:label>
+        <rdfs:comment xml:lang="it">Complessita' molto bassa, regole immediate.</rdfs:comment>
+      </bg:LivelloComplessita>
+    </bg:haComplessita>
+    <bg:progettatoDa>
+      <bg:Autore rdf:about="http://www.unito.it/modsem/boardgames#MerleRobbins">
+        <foaf:name>Merle Robbins</foaf:name>
+        <rdfs:label xml:lang="it">Merle Robbins</rdfs:label>
+        <rdfs:comment xml:lang="it">Inventore statunitense di UNO.</rdfs:comment>
+      </bg:Autore>
+    </bg:progettatoDa>
+    <bg:pubblicatoDa>
+      <bg:Editore rdf:about="http://www.unito.it/modsem/boardgames#Mattel">
+        <foaf:name>Mattel</foaf:name>
+        <rdfs:label xml:lang="it">Mattel</rdfs:label>
+        <rdfs:comment xml:lang="it">Casa editrice che pubblica UNO.</rdfs:comment>
+      </bg:Editore>
+    </bg:pubblicatoDa>
+    <bg:haMeccanica>
+      <bg:MeccanicaAleatoria rdf:about="http://www.unito.it/modsem/boardgames#PescaCarte">
+        <rdf:type rdf:resource="http://www.unito.it/modsem/boardgames#Meccanica"/>
+        <skos:prefLabel xml:lang="it">Pesca di carte</skos:prefLabel>
+        <rdfs:label xml:lang="it">Pesca di carte</rdfs:label>
+        <rdfs:comment xml:lang="it">Pesca casuale di carte da un mazzo (meccanica aleatoria).</rdfs:comment>
+      </bg:MeccanicaAleatoria>
+    </bg:haMeccanica>
+    <bg:haMeccanica>
+      <bg:Meccanica rdf:about="http://www.unito.it/modsem/boardgames#CorrispondenzaColori">
+        <skos:prefLabel xml:lang="it">Corrispondenza colori/simboli</skos:prefLabel>
+        <rdfs:label xml:lang="it">Corrispondenza colori/simboli</rdfs:label>
+        <rdfs:comment xml:lang="it">Si gioca una carta che corrisponde per colore o simbolo a quella in cima alla pila.</rdfs:comment>
+      </bg:Meccanica>
+    </bg:haMeccanica>
+    <bg:haComponente rdf:resource="http://www.unito.it/modsem/boardgames#MazzoUNO"/>
+    <rdfs:label xml:lang="it">UNO</rdfs:label>
+    <rdfs:comment xml:lang="it">Gioco di carte del 1971. Ha una meccanica aleatoria (GiocoConAleatorieta via reasoner) ma solo 2 meccaniche: NON e' GiocoComplesso.</rdfs:comment>
+  </bg:GiocoBase>
+  <bg:Autore rdf:about="http://www.unito.it/modsem/boardgames#CharlesDarrow">
+    <foaf:name>Charles Darrow</foaf:name>
+    <rdfs:label xml:lang="it">Charles Darrow</rdfs:label>
+    <rdfs:comment xml:lang="it">Comunemente accreditato come autore della versione moderna di Monopoli.</rdfs:comment>
+  </bg:Autore>
+  <owl:Class rdf:about="http://www.unito.it/modsem/boardgames#PartitaGiocata">
+    <rdfs:label xml:lang="it">Partita giocata</rdfs:label>
+    <rdfs:comment xml:lang="it">Pattern Evento: una singola sessione di gioco, con un gioco, dei partecipanti, una data e (opzionalmente) un vincitore.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.unito.it/modsem/boardgames#Meccanica">
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <rdfs:label xml:lang="it">Meccanica</rdfs:label>
+    <rdfs:comment xml:lang="it">Una meccanica di gioco. Modellata anche come skos:Concept per il riuso come vocabolario controllato.</rdfs:comment>
+  </owl:Class>
+  <owl:ObjectProperty rdf:about="http://www.unito.it/modsem/boardgames#partecipaA">
+    <rdfs:domain rdf:resource="http://www.unito.it/modsem/boardgames#Persona"/>
+    <rdfs:range rdf:resource="http://www.unito.it/modsem/boardgames#PartitaGiocata"/>
+    <rdfs:label xml:lang="it">partecipa a</rdfs:label>
+    <rdfs:comment xml:lang="it">Collega un giocatore (persona) a una sessione di gioco.</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:Class rdf:about="http://www.unito.it/modsem/boardgames#Componente">
+    <rdfs:label xml:lang="it">Componente</rdfs:label>
+    <rdfs:comment xml:lang="it">Un elemento fisico che compone un gioco da tavolo (tabellone, carte, segnalini, dadi).</rdfs:comment>
+  </owl:Class>
+  <bg:Editore rdf:about="http://www.unito.it/modsem/boardgames#Hasbro">
+    <foaf:name>Hasbro</foaf:name>
+    <rdfs:label xml:lang="it">Hasbro</rdfs:label>
+    <rdfs:comment xml:lang="it">Casa editrice che pubblica Monopoli.</rdfs:comment>
+  </bg:Editore>
+  <bg:Persona rdf:about="http://www.unito.it/modsem/boardgames#Anna">
+    <foaf:name>Anna</foaf:name>
+    <bg:partecipaA>
+      <bg:PartitaGiocata rdf:about="http://www.unito.it/modsem/boardgames#PartitaAlpha">
+        <bg:partitaDelGioco rdf:resource="http://www.unito.it/modsem/boardgames#UNO"/>
+        <bg:dataPartita rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-05-10</bg:dataPartita>
+        <bg:vintaDa rdf:resource="http://www.unito.it/modsem/boardgames#Anna"/>
+        <rdfs:label xml:lang="it">Partita Alpha</rdfs:label>
+        <rdfs:comment xml:lang="it">Sessione di UNO. Per property chain i partecipanti risultano avere giocato a UNO.</rdfs:comment>
+      </bg:PartitaGiocata>
+    </bg:partecipaA>
+    <rdfs:label xml:lang="it">Anna</rdfs:label>
+    <rdfs:comment xml:lang="it">Giocatrice della Partita Alpha.</rdfs:comment>
+  </bg:Persona>
+  <bg:GiocoBase rdf:about="http://www.unito.it/modsem/boardgames#Monopoli">
+    <rdf:type rdf:resource="http://www.unito.it/modsem/boardgames#GiocoPerFamiglie"/>
+    <bg:titolo>Monopoli</bg:titolo>
+    <bg:annoPubblicazione rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">1935</bg:annoPubblicazione>
+    <bg:numeroMaxGiocatori rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">8</bg:numeroMaxGiocatori>
+    <bg:durataMediaMinuti rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">120</bg:durataMediaMinuti>
+    <bg:etaConsigliata rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">8</bg:etaConsigliata>
+    <bg:votoBGG rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">4.4</bg:votoBGG>
+    <bg:haComplessita>
+      <bg:LivelloComplessita rdf:about="http://www.unito.it/modsem/boardgames#MedioLeggero">
+        <rdfs:label xml:lang="it">Medio-leggero</rdfs:label>
+        <rdfs:comment xml:lang="it">Complessita' contenuta, adatto a giocatori occasionali.</rdfs:comment>
+      </bg:LivelloComplessita>
+    </bg:haComplessita>
+    <bg:progettatoDa rdf:resource="http://www.unito.it/modsem/boardgames#CharlesDarrow"/>
+    <bg:pubblicatoDa rdf:resource="http://www.unito.it/modsem/boardgames#Hasbro"/>
+    <bg:haMeccanica rdf:resource="http://www.unito.it/modsem/boardgames#LancioDadi"/>
+    <bg:haMeccanica rdf:resource="http://www.unito.it/modsem/boardgames#Negoziazione"/>
+    <bg:haMeccanica>
+      <bg:Meccanica rdf:about="http://www.unito.it/modsem/boardgames#GestionePatrimonio">
+        <skos:prefLabel xml:lang="it">Gestione del patrimonio</skos:prefLabel>
+        <rdfs:label xml:lang="it">Gestione del patrimonio</rdfs:label>
+        <rdfs:comment xml:lang="it">Acquisto, gestione e accumulo di proprieta' e denaro.</rdfs:comment>
+      </bg:Meccanica>
+    </bg:haMeccanica>
+    <bg:haComponente>
+      <bg:Componente rdf:about="http://www.unito.it/modsem/boardgames#PlanciaMonopoli">
+        <bg:eParteDi rdf:resource="http://www.unito.it/modsem/boardgames#Monopoli"/>
+        <rdfs:label xml:lang="it">Plancia di Monopoli</rdfs:label>
+        <rdfs:comment xml:lang="it">Il tabellone quadrato con le caselle delle proprieta'.</rdfs:comment>
+      </bg:Componente>
+    </bg:haComponente>
+    <rdfs:label xml:lang="it">Monopoli</rdfs:label>
+    <rdfs:comment xml:lang="it">Gioco economico del 1935. Con 3 meccaniche distinte il reasoner lo classifica GiocoComplesso e, per i dadi, GiocoConAleatorieta.</rdfs:comment>
+  </bg:GiocoBase>
+  <owl:Class rdf:about="http://www.unito.it/modsem/boardgames#GiocoDiStrategia">
+    <rdfs:subClassOf rdf:resource="http://www.unito.it/modsem/boardgames#Gioco"/>
+    <rdfs:label xml:lang="it">Gioco di strategia</rdfs:label>
+    <rdfs:comment xml:lang="it">Gioco in cui il risultato dipende prevalentemente dalle decisioni dei giocatori. Secondo livello della tassonomia.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.unito.it/modsem/boardgames#Wargame">
+    <rdfs:subClassOf rdf:resource="http://www.unito.it/modsem/boardgames#GiocoDiStrategia"/>
+    <rdfs:label xml:lang="it">Wargame</rdfs:label>
+    <rdfs:comment xml:lang="it">Gioco di strategia incentrato su conflitti militari simulati. Terzo livello della tassonomia (Gioco &gt; GiocoDiStrategia &gt; Wargame).</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.unito.it/modsem/boardgames#Autore">
+    <rdfs:subClassOf rdf:resource="http://www.unito.it/modsem/boardgames#Persona"/>
+    <rdfs:label xml:lang="it">Autore</rdfs:label>
+    <rdfs:comment xml:lang="it">Persona che progetta giochi da tavolo (game designer).</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.unito.it/modsem/boardgames#Persona">
+    <owl:equivalentClass rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    <rdfs:label xml:lang="it">Persona</rdfs:label>
+    <rdfs:comment xml:lang="it">Un individuo umano. Allineata per equivalenza a foaf:Person.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://xmlns.com/foaf/0.1/Person">
+    <rdfs:label xml:lang="en">Person</rdfs:label>
+    <rdfs:comment xml:lang="en">Classe FOAF per le persone.</rdfs:comment>
+  </owl:Class>
+  <owl:ObjectProperty rdf:about="http://www.unito.it/modsem/boardgames#partitaDelGioco">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:domain rdf:resource="http://www.unito.it/modsem/boardgames#PartitaGiocata"/>
+    <rdfs:range rdf:resource="http://www.unito.it/modsem/boardgames#Gioco"/>
+    <rdfs:label xml:lang="it">partita del gioco</rdfs:label>
+    <rdfs:comment xml:lang="it">Proprieta' funzionale: collega una sessione di gioco all'unico gioco a cui si e' giocato.</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:Class rdf:about="http://www.unito.it/modsem/boardgames#Gioco">
+    <rdfs:subClassOf rdf:resource="http://schema.org/Game"/>
+    <rdfs:label xml:lang="it">Gioco</rdfs:label>
+    <rdfs:comment xml:lang="it">Classe radice del dominio: un gioco da tavolo. Allineata per sussunzione a schema:Game.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.w3.org/2004/02/skos/core#Concept">
+    <rdfs:label xml:lang="en">Concept</rdfs:label>
+    <rdfs:comment xml:lang="en">Classe SKOS per i concetti di un vocabolario controllato.</rdfs:comment>
+  </owl:Class>
+  <bg:PartitaGiocata rdf:about="http://www.unito.it/modsem/boardgames#PartitaBeta">
+    <bg:partitaDelGioco rdf:resource="http://www.unito.it/modsem/boardgames#Risiko"/>
+    <bg:dataPartita rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-05-12</bg:dataPartita>
+    <bg:vintaDa>
+      <bg:Persona rdf:about="http://www.unito.it/modsem/boardgames#Bruno">
+        <foaf:name>Bruno</foaf:name>
+        <bg:partecipaA rdf:resource="http://www.unito.it/modsem/boardgames#PartitaAlpha"/>
+        <bg:partecipaA rdf:resource="http://www.unito.it/modsem/boardgames#PartitaBeta"/>
+        <rdfs:label xml:lang="it">Bruno</rdfs:label>
+        <rdfs:comment xml:lang="it">Giocatore delle Partite Alpha e Beta.</rdfs:comment>
+      </bg:Persona>
+    </bg:vintaDa>
+    <rdfs:label xml:lang="it">Partita Beta</rdfs:label>
+    <rdfs:comment xml:lang="it">Sessione di Risiko! vinta da Bruno.</rdfs:comment>
+  </bg:PartitaGiocata>
+  <owl:Class rdf:about="http://xmlns.com/foaf/0.1/Organization">
+    <rdfs:label xml:lang="en">Organization</rdfs:label>
+    <rdfs:comment xml:lang="en">Classe FOAF per le organizzazioni.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.unito.it/modsem/boardgames#MeccanicaAleatoria">
+    <rdfs:subClassOf rdf:resource="http://www.unito.it/modsem/boardgames#Meccanica"/>
+    <rdfs:label xml:lang="it">Meccanica aleatoria</rdfs:label>
+    <rdfs:comment xml:lang="it">Meccanica il cui esito dipende dal caso (lancio di dadi, pesca di carte).</rdfs:comment>
+  </owl:Class>
+  <bg:Meccanica rdf:about="http://www.unito.it/modsem/boardgames#Commercio">
+    <skos:prefLabel xml:lang="it">Commercio</skos:prefLabel>
+    <skos:broader rdf:resource="http://www.unito.it/modsem/boardgames#Negoziazione"/>
+    <rdfs:label xml:lang="it">Commercio</rdfs:label>
+    <rdfs:comment xml:lang="it">Scambio di risorse tramite contrattazione; concetto piu' specifico della Negoziazione (skos:broader).</rdfs:comment>
+  </bg:Meccanica>
+  <bg:Persona rdf:about="http://www.unito.it/modsem/boardgames#Carla">
+    <foaf:name>Carla</foaf:name>
+    <bg:partecipaA rdf:resource="http://www.unito.it/modsem/boardgames#PartitaBeta"/>
+    <rdfs:label xml:lang="it">Carla</rdfs:label>
+    <rdfs:comment xml:lang="it">Giocatrice della Partita Beta.</rdfs:comment>
+  </bg:Persona>
+  <owl:Class rdf:about="http://www.unito.it/modsem/boardgames#Editore">
+    <rdfs:subClassOf rdf:resource="http://xmlns.com/foaf/0.1/Organization"/>
+    <rdfs:label xml:lang="it">Editore</rdfs:label>
+    <rdfs:comment xml:lang="it">Organizzazione che pubblica e distribuisce giochi da tavolo. Allineata per sussunzione a foaf:Organization.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.unito.it/modsem/boardgames#GiocoBase">
+    <rdfs:subClassOf rdf:resource="http://www.unito.it/modsem/boardgames#Gioco"/>
+    <rdfs:label xml:lang="it">Gioco base</rdfs:label>
+    <rdfs:comment xml:lang="it">Un gioco autonomo, giocabile senza richiedere altri prodotti.</rdfs:comment>
+  </owl:Class>
+  <bg:LivelloComplessita rdf:about="http://www.unito.it/modsem/boardgames#Pesante">
+    <rdfs:label xml:lang="it">Pesante</rdfs:label>
+    <rdfs:comment xml:lang="it">Complessita' molto alta, regolamenti corposi.</rdfs:comment>
+  </bg:LivelloComplessita>
+  <owl:Class rdf:about="http://schema.org/Game">
+    <rdfs:label xml:lang="en">Game</rdfs:label>
+    <rdfs:comment xml:lang="en">Classe di schema.org usata come riferimento di alto livello.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.unito.it/modsem/boardgames#GiocoPerFamiglie">
+    <rdfs:subClassOf rdf:resource="http://www.unito.it/modsem/boardgames#Gioco"/>
+    <rdfs:label xml:lang="it">Gioco per famiglie</rdfs:label>
+    <rdfs:comment xml:lang="it">Gioco con regole semplici e durata contenuta, adatto a giocatori di eta' diverse.</rdfs:comment>
+  </owl:Class>
+  <bg:LivelloComplessita rdf:about="http://www.unito.it/modsem/boardgames#MedioPesante">
+    <rdfs:label xml:lang="it">Medio-pesante</rdfs:label>
+    <rdfs:comment xml:lang="it">Complessita' elevata, per giocatori esperti.</rdfs:comment>
+  </bg:LivelloComplessita>
+</rdf:RDF>
