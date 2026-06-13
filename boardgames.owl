@@ -26,7 +26,7 @@
     <rdfs:label xml:lang="it">Ontologia dei Giochi da Tavolo</rdfs:label>
     <dc:title xml:lang="it">Ontologia per il catalogo e la raccomandazione di giochi da tavolo</dc:title>
     <dc:description xml:lang="it">Ontologia che modella il dominio dei giochi da tavolo: giochi, meccaniche, autori, editori, componenti, livelli di complessita' e sessioni di gioco, per task di consultazione e raccomandazione di catalogo.</dc:description>
-    <dc:creator xml:lang="it">[Nome Cognome]</dc:creator>
+    <dc:creator xml:lang="it">Davide Capra</dc:creator>
     <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-06-08</dc:date>
     <vann:preferredNamespacePrefix>bg</vann:preferredNamespacePrefix>
     <vann:preferredNamespaceUri>http://www.unito.it/modsem/boardgames#</vann:preferredNamespaceUri>
